@@ -69,11 +69,15 @@ export function CreateTask({}) {
 export default function Home({ tasks }) {
   function deleteTask(id) {
     console.log(id);
-    axios.delete(`http://127.0.0.1:8000/tasks/${id}`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    axios
+      .delete(`http://localhost:8000/tasks/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+      });
   }
 
   return (
